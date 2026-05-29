@@ -34,8 +34,17 @@
     <script src="index.js"></script>
   </head>
   <body>
-    <input id="input" type="text" placeholder="Enter value" />
-    <button type="button" id="submit" onclick="findSolutions()">Submit</button>
-
+    <input id="input" type="number" placeholder="Enter value" />
+    <button type="button" id="submit" onclick="handleSubmit()">Submit</button>
+    <p id="max-profit"></p>
+    <p id="answers"></p>
+    <script>
+      function handleSubmit() {
+        const value = document.getElementById('input').value;
+        const { maxProfit, answers } = getSolutions(value);
+        document.getElementById('max-profit').innerHTML = `Max Profit: ${maxProfit}`;
+        document.getElementById('answers').innerHTML = `Answers: ${answers.map(answer => `{ ${Object.entries(answer).map(([key, value]) => `${key}: ${value}`).join(', ')} }`).join(', ')}`;
+      }
+    </script>
   </body>
 </html>
